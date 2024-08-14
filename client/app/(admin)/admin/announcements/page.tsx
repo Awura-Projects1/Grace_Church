@@ -14,7 +14,7 @@ export default async function page({}: Props) {
   return (
     <div className="flex flex-col gap-5 w-full">
       <div className="flex flex-wrap justify-between">
-        <PageTitle title="Members" />
+        <PageTitle title="Announcements" />
         <CreateAnnouncement
           title="Add a new announcement here"
           trigger="Add Announcement"

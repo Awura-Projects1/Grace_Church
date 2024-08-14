@@ -13,7 +13,7 @@ export async function getManyEvents() {
 
 export async function createEvent(data: Event) {
   try {
-    const response = await fetcher.post("/events", data); // Ensure correct endpoint and payload
+    const response = await fetcher.post("/events", data);
     return response.data as Event | null;
   } catch (error: any) {
     console.error(
