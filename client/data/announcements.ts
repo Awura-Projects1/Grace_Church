@@ -1,5 +1,7 @@
 "use server";
+import { useRouter } from "next/navigation";
 import fetcher from "./fetcher";
+import toast from "react-hot-toast";
 
 export async function getManyAnnouncements() {
   try {
@@ -13,7 +15,6 @@ export async function getManyAnnouncements() {
 export async function deleteAnnouncement(id: number) {
   try {
     const response = await fetcher.delete(`/announcements/${id}`);
-    console.log(response.data);
     return response.data;
   } catch (error: any) {
     console.error(

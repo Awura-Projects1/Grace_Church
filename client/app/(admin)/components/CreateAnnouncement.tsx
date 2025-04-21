@@ -32,6 +32,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useRouter } from "next/navigation";
 
 type Props = {
   title: string;
@@ -51,6 +52,8 @@ export default function CreateAnnouncement({
   const [description, setDescription] = useState("");
   const [date, setDate] = useState<Date>();
 
+  const router = useRouter();
+
   const onSubmit = async (announcement: React.FormEvent) => {
     announcement.preventDefault();
 
@@ -65,6 +68,7 @@ export default function CreateAnnouncement({
         "http://localhost:8000/announcements",
         data
       );
+      router.refresh();
       toast.success("Announcement created successfully");
       // Optionally reset the form fields
       setName("");

@@ -21,7 +21,7 @@ export default function MembersCard(props: MembersProps) {
           />
         </div>
         <div className="text-sm">
-          <p>{props.firstName + " " + props.lastName}</p>
+          <p>{props.firstName }</p>
           <div className="text-ellipsis overflow-hidden whitespace-nowrap w-[120px] sm:w-auto">
             {props.email}
           </div>

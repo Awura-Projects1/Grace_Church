@@ -54,6 +54,7 @@ const page = async () => {
           </p>
           {members.slice(0, 5).map((member: MembersProps, index: number) => (
             <MembersCard
+              id={member.id}
               key={index}
               firstName={member.firstName}
               lastName={member.lastName}

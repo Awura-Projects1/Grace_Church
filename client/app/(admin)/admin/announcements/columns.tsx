@@ -11,6 +11,7 @@ import {
 import { deleteAnnouncement } from "@/data/announcements";
 import { ColumnDef } from "@tanstack/react-table";
 import { Delete, Edit, MoreHorizontal } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export const columns: ColumnDef<Announcement>[] = [
   {
@@ -30,6 +31,7 @@ export const columns: ColumnDef<Announcement>[] = [
     header: "Actions",
     cell: ({ row }) => {
       const announcement = row.original;
+      const router = useRouter();
 
       return (
         <DropdownMenu>
@@ -46,7 +48,10 @@ export const columns: ColumnDef<Announcement>[] = [
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              onClick={() => handleDelete(announcement)}
+              onClick={() => {
+                handleDelete(announcement);
+                router.refresh();
+              }}
               className="flex items-center text-red-600"
             >
               <Delete className="mr-2" />

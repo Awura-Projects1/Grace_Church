@@ -15,6 +15,7 @@ import { Plus } from "lucide-react";
 import { toast } from "react-hot-toast";
 import React, { useState } from "react";
 import { Label } from "@/components/ui/label";
+import { useRouter } from "next/navigation";
 
 type Props = {
   title: string;
@@ -35,6 +36,8 @@ export default function CreateEvent({
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
 
+  const router = useRouter();
+
   const onSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
@@ -47,6 +50,7 @@ export default function CreateEvent({
 
     try {
       const response = await axios.post("http://localhost:8000/members", data);
+      router.refresh();
       toast.success("Member created successfully");
       // Optionally reset the form fields
       setFirstName("");

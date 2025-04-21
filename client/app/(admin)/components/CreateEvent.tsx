@@ -32,6 +32,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useRouter } from "next/navigation";
 
 type Props = {
   title: string;
@@ -53,6 +54,8 @@ export default function CreateEvent({
   const [endDate, setEndDate] = useState<Date>();
   const [status, setStatus] = useState("");
 
+  const router = useRouter();
+
   const onSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
@@ -66,6 +69,8 @@ export default function CreateEvent({
 
     try {
       const response = await axios.post("http://localhost:8000/events", data);
+      router.refresh();
+
       toast.success("Event created successfully");
       // Optionally reset the form fields
       setName("");
